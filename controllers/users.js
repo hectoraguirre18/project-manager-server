@@ -1,8 +1,10 @@
+const async = require('async');
+const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
 function list(req, res, next){
     const page = req.params.page ? req.params.page : 1;
-    User.paginate({}, {page: page, limit: 1}).then(users => res.status(200).json({
+    User.paginate({}, {page: page, limit: 100}).then(users => res.status(200).json({
         message: 'Usuarios encontrados correctamente',
         objs: users
     })).catch(error => res.status(500).json({
@@ -23,23 +25,33 @@ function index(req, res){
 }
 
 function create(req, res){
-    let user = new User({
-        _name: req.body.name,
-        _birthdate: req.body.birthdate,
-        _curp: req.body.curp,
-        _rfc: req.body.rfc,
-        _address: req.body.address,
-        _email: req.body.email,
-        _password: req.body.password,
-    });
 
-    user.save().then(user => res.status(200).json({
-        message: 'Usuario creado correctamente',
-        objs: user
-    })).catch(error => res.status(500).json({
-        message: 'No se pudo almacenar el usuario',
-        obj: error
-    }));
+    async.parallel({
+        salt: (callback) => {
+            bcrypt.genSalt(10, callback);
+        }
+    }, (err, result) => {
+        bcrypt.hash(req.body.password, result.salt, (err, hash) => {
+            let user = new User({
+                _name: req.body.name,
+                _birthdate: req.body.birthdate,
+                _curp: req.body.curp,
+                _rfc: req.body.rfc,
+                _address: req.body.address,
+                _email: req.body.email,
+                _password: hash,
+                _salt: result.salt
+            });
+
+            user.save().then(user => res.status(200).json({
+                message: 'Usuario creado correctamente',
+                objs: user
+            })).catch(error => res.status(500).json({
+                message: 'No se pudo almacenar el usuario',
+                obj: error
+            }));
+        });
+    });
 }
 
 function update(req, res){

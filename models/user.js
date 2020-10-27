@@ -9,11 +9,12 @@ const schema = mongoose.Schema({
     _address: String,
     _email: String,
     _password: String,
+    _salt: String,
 });
 
 class User {
 
-    constructor(name, birthdate, curp, rfc, address, email, password) {
+    constructor(name, birthdate, curp, rfc, address, email, password, salt) {
         this._name      = name;
         this._birthdate = birthdate;
         this._curp      = curp;
@@ -21,6 +22,7 @@ class User {
         this._address   = address;
         this._email     = email;
         this._password  = password;
+        this._salt      = salt;
     }
 
     get name() {
@@ -77,6 +79,14 @@ class User {
 
     set password(v) {
         this._password = v;
+    }
+
+    get salt() {
+        return this._salt;
+    }
+
+    set salt(v) {
+        this._salt = v;
     }
 }
 
