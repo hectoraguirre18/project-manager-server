@@ -1,7 +1,8 @@
 const User = require('../models/user');
 
 function list(req, res, next){
-    User.find().then(users => res.status(200).json({
+    const page = req.params.page ? req.params.page : 1;
+    User.paginate({}, {page: page, limit: 1}).then(users => res.status(200).json({
         message: 'Usuarios encontrados correctamente',
         objs: users
     })).catch(error => res.status(500).json({
