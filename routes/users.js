@@ -7,10 +7,10 @@ router.get('/', controller.list);
 
 router.get('/:id', controller.index);
 
-router.post('/', controller.create );
+router.post('/', controller.create);
 
-router.put('/', controller.update );
+router.put('/:id', controller.update);
 
-router.delete('/', controller.destroy);
+router.delete('/:id', controller.destroy);
 
 module.exports = router;
