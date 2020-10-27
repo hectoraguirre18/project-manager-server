@@ -2,7 +2,7 @@ const async = require('async');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
-function list(req, res, next){
+function list(req, res, next) {
     const page = req.params.page ? req.params.page : 1;
     User.paginate({}, {page: page, limit: 100}).then(users => res.status(200).json({
         message: 'Usuarios encontrados correctamente',
@@ -13,7 +13,7 @@ function list(req, res, next){
     }));
 }
 
-function index(req, res){
+function index(req, res) {
     let id = req.params.id;
     User.findOne({_id: id}).then(user => res.status(200).json({
         message: 'Usuario encontrado correctamente',
@@ -24,37 +24,7 @@ function index(req, res){
     }));
 }
 
-function create(req, res){
-
-    async.parallel({
-        salt: (callback) => {
-            bcrypt.genSalt(10, callback);
-        }
-    }, (err, result) => {
-        bcrypt.hash(req.body.password, result.salt, (err, hash) => {
-            let user = new User({
-                _name: req.body.name,
-                _birthdate: req.body.birthdate,
-                _curp: req.body.curp,
-                _rfc: req.body.rfc,
-                _address: req.body.address,
-                _email: req.body.email,
-                _password: hash,
-                _salt: result.salt
-            });
-
-            user.save().then(user => res.status(200).json({
-                message: 'Usuario creado correctamente',
-                objs: user
-            })).catch(error => res.status(500).json({
-                message: 'No se pudo almacenar el usuario',
-                obj: error
-            }));
-        });
-    });
-}
-
-function update(req, res){
+function update(req, res) {
     let id = req.params.id;
 
     let user = new Object();
@@ -83,7 +53,7 @@ function update(req, res){
     }));
 }
 
-function destroy(req, res){
+function destroy(req, res) {
     const id = req.params.id;
     User.deleteOne({_id: id}).then(user => res.status(200).json({
         message: 'Usuario eliminado correctamente',
@@ -97,7 +67,6 @@ function destroy(req, res){
 module.exports = {
     list,
     index,
-    create,
     update,
     destroy
 }
