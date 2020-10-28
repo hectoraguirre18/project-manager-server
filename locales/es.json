@@ -10,5 +10,15 @@
     "user.update.ok": "Usuario actualizado correctamente",
     "user.update.err": "No se pudo actualizar el usuario",
     "user.delete.ok": "Usuario eliminado correctamente",
-    "user.delete.err": "No se pudo eliminar el usuario"
+    "user.delete.err": "No se pudo eliminar el usuario",
+    "column.findAll.ok": "Columnas encontradas correctamente",
+    "column.findAll.err": "No se pudieron encontrar las columnas",
+    "column.findOne.ok": "Columna encontrada correctamente",
+    "column.findOne.err": "No se pudo encontrar la columna",
+    "column.create.ok": "Columna creada correctamente",
+    "column.create.err": "No se pudo crear la columna",
+    "column.update.ok": "Columna actualizada correctamente",
+    "column.update.err": "No se pudo actualizar la columna",
+    "column.delete.ok": "Columna eliminada correctamente",
+    "column.delete.err": "No se pudo eliminar la columna"
 }

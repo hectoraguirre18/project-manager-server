@@ -29,7 +29,7 @@ function signup(req, res) {
         message: res.__('user.register.ok'),
         objs: user
       })).catch(error => res.status(500).json({
-        message: res.__('user.register.ok'),
+        message: res.__('user.register.err'),
         obj: error
       }));
     });
