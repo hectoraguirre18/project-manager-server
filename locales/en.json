@@ -21,5 +21,15 @@
 	"column.update.err": "Could not update column",
 	"column.delete.ok": "Column successfully deleted",
 	"column.delete.err": "Could not delete column",
-	"column.register.ok": "column.register.ok"
+	"column.register.ok": "column.register.ok",
+	"project.create.ok": "Correct creation for proyect",
+    "project.create.err": "Unable to create proyect",
+    "project.update.ok": "Correct update for proyect",
+    "proyect.update.err": "Unable to update proyect",
+    "project.list.ok": "All proyects found correctly",
+    "projects.list.err": "Unable to find proyects",
+    "projects.index.ok": "Proyect found",
+    "project.index.err": "Unable to found proyect",
+    "project.destroy.ok": "Proyect eliminated correclty",
+    "project.destroy.err": "Unable to elminate proyect"
 }

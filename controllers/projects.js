@@ -6,10 +6,10 @@ const Projects = require('../models/project');
 function list(req, res, next) {
   const page = req.params.page ? req.params.page : 1;
   Projects.paginate({}, {page: page, limit: 100}).then(project => res.status(200).json({
-      message: 'Proyectos encontrados correctamente',
+      message: project.list.ok,
       objs: project
   })).catch(error => res.status(500).json({
-      message: 'No se pudieron encontrar los proyectos',
+      message: project.list.err,
       obj: error
   }));
   }
@@ -17,10 +17,10 @@ function list(req, res, next) {
   function index(req, res) {
     let id = req.params.id;
     Projects.findOne({_id: id}).then(user => res.status(200).json({
-        message: 'Proyecto encontrado correctamente',
+        message: project.index.ok,
         objs: project
     })).catch(error => res.status(500).json({
-        message: 'No se pudo encontrar el proyecto',
+        message: project.index.err,
         obj: error
     }));
   }
@@ -46,10 +46,10 @@ function list(req, res, next) {
     });
 
     project.save().then(obj => res.status(200).json({
-      message : 'proyecto creado correctamente',
+      message : project.create.ok,
       objs : project
     })).catch(err=> res.status(500).json({
-      message : 'no se pudo almacenar el proyecto',
+      message : project.create.err,
       objs : err
     }));
 
@@ -76,10 +76,10 @@ function list(req, res, next) {
         user._teamLds = req.body.teamLds;
 
     Projects.findOneAndUpdate({_id: id}, project, {omitUndefined: true}).then(project => res.status(200).json({
-        message: 'Proyecto actualizado correctamente',
+        message: project.update.ok,
         objs: project
     })).catch(error => res.status(500).json({
-        message: 'No se pudo actualizar el proyecto',
+        message: project.update.err,
         obj: error
     }));
   }
@@ -87,10 +87,10 @@ function list(req, res, next) {
   function destroy(req, res) {
     const id = req.params.id;
     Projects.deleteOne({_id: id}).then(project => res.status(200).json({
-        message: 'Proyecto eliminado correctamente',
+        message: project.destroy.ok,
         objs: project
     })).catch(error => res.status(500).json({
-        message: 'No se pudo eliminado el proyecto',
+        message: project.destroy.err,
         obj: error
     }));
   }
