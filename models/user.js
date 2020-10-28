@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
+const Skill = require('./skill');
 
 const schema = mongoose.Schema({
     _name: String,
@@ -7,6 +8,7 @@ const schema = mongoose.Schema({
     _curp: String,
     _rfc: String,
     _address: String,
+    _skillList: [Skill],
     _email: String,
     _password: String,
     _salt: String,
@@ -14,12 +16,13 @@ const schema = mongoose.Schema({
 
 class User {
 
-    constructor(name, birthdate, curp, rfc, address, email, password, salt) {
+    constructor(name, birthdate, curp, rfc, address, skillList, email, password, salt) {
         this._name      = name;
         this._birthdate = birthdate;
         this._curp      = curp;
         this._rfc       = rfc;
         this._address   = address;
+        this._skillList = skillList;
         this._email     = email;
         this._password  = password;
         this._salt      = salt;
@@ -63,6 +66,14 @@ class User {
 
     set address(v) {
         this._address = v;
+    }
+
+    get skillList() {
+        return this._skillList;
+    }
+
+    set skillList(v) {
+        this._skillList = v;
     }
 
     get email() {

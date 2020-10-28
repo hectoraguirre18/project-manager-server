@@ -19,6 +19,7 @@ function signup(req, res) {
         _curp: req.body.curp,
         _rfc: req.body.rfc,
         _address: req.body.address,
+        _skillList: req.body.skillList,
         _email: req.body.email,
         _password: hash,
         _salt: result.salt
