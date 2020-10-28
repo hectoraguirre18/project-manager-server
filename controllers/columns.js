@@ -5,7 +5,8 @@ const Column = require('../models/column');
 function list(req, res, next) {
   const page = req.params.page ? req.params.page : 1;
   Column.paginate({}, {
-    page: page, limit: 100
+    page: page,
+    limit: 100
   }).then(columns => res.status(200).json({
     message: res.__('column.findAll.ok'),
     objs: columns
