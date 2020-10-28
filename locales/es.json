@@ -1,0 +1,14 @@
+{
+    "user.login.ok": "Login exitoso",
+    "user.login.err": "Usuario y/o contraseña incorrecta",
+    "user.register.ok": "Usuario registrado correctamente",
+    "user.register.err": "No se pudo registrar el usuario",
+    "user.findAll.ok": "Usuarios encontrados correctamente",
+    "user.findAll.err": "No se pudieron encontrar los usuarios",
+    "user.findOne.ok": "Usuario encontrado correctamente",
+    "user.findOne.err": "No se pudo encontrar el usuario",
+    "user.update.ok": "Usuario actualizado correctamente",
+    "user.update.err": "No se pudo actualizar el usuario",
+    "user.delete.ok": "Usuario eliminado correctamente",
+    "user.delete.err": "No se pudo eliminar el usuario"
+}

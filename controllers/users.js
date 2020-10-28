@@ -5,10 +5,10 @@ const User = require('../models/user');
 function list(req, res, next) {
     const page = req.params.page ? req.params.page : 1;
     User.paginate({}, {page: page, limit: 100}).then(users => res.status(200).json({
-        message: 'Usuarios encontrados correctamente',
+        message: res.__('user.findAll.ok'),
         objs: users
     })).catch(error => res.status(500).json({
-        message: 'No se pudieron encontrar los usuarios',
+        message: res.__('user.findAll.err'),
         obj: error
     }));
 }
@@ -16,10 +16,10 @@ function list(req, res, next) {
 function index(req, res) {
     let id = req.params.id;
     User.findOne({_id: id}).then(user => res.status(200).json({
-        message: 'Usuario encontrado correctamente',
+        message: res.__('user.findOne.ok'),
         objs: user
     })).catch(error => res.status(500).json({
-        message: 'No se pudo encontrar el usuario',
+        message: res.__('user.findOne.err'),
         obj: error
     }));
 }
@@ -45,10 +45,10 @@ function update(req, res) {
         user._password = req.body.password;
 
     User.findOneAndUpdate({_id: id}, user, {omitUndefined: true}).then(user => res.status(200).json({
-        message: 'Usuario actualizado correctamente',
+        message: res.__('user.update.ok'),
         objs: user
     })).catch(error => res.status(500).json({
-        message: 'No se pudo actualizar el usuario',
+        message: res.__('user.update.err'),
         obj: error
     }));
 }
@@ -56,10 +56,10 @@ function update(req, res) {
 function destroy(req, res) {
     const id = req.params.id;
     User.deleteOne({_id: id}).then(user => res.status(200).json({
-        message: 'Usuario eliminado correctamente',
+        message: res.__('user.delete.ok'),
         objs: user
     })).catch(error => res.status(500).json({
-        message: 'No se pudo eliminado el usuario',
+        message: res.__('user.delete.err'),
         obj: error
     }));
 }

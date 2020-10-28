@@ -1,0 +1,14 @@
+{
+    "user.login.ok": "Successful login",
+    "user.login.err": "Invalid credentials",
+    "user.register.ok": "User succesfully registered",
+    "user.register.err": "Could not register user",
+    "user.findAll.ok": "Users succesfully found",
+    "user.findAll.err": "Could not find users",
+    "user.findOne.ok": "User successfully found",
+    "user.findOne.err": "Could not find user",
+    "user.update.ok": "User successfully updated",
+    "user.update.err": "Could not update user",
+    "user.delete.ok": "User successfully deleted",
+    "user.delete.err": "Could not delete user"
+}

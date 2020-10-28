@@ -1,9 +1,10 @@
 const async = require('async');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const config = require('config');
 const User = require('../models/user');
 
-const jwtKey = '8a6d7797d70e0a0580a8de35859d53f6';
+const jwtKey = config.get('secret.key');
 
 function signup(req, res) {
   async.parallel({
@@ -24,10 +25,10 @@ function signup(req, res) {
       });
 
       user.save().then(user => res.status(200).json({
-        message: 'Usuario registrado correctamente',
+        message: res.__('user.register.ok'),
         objs: user
       })).catch(error => res.status(500).json({
-        message: 'No se pudo registrar el usuario',
+        message: res.__('user.register.ok'),
         obj: error
       }));
     });
@@ -46,15 +47,19 @@ function login(req, res) {
       bcrypt.hash(password, result.user.salt, (err, hash) => {
         if (hash === result.user.password) {
           res.status(200).json({
-            message: "Login exitoso",
+            message: res.__('user.login.ok'),
             objs: jwt.sign(result.user.id, jwtKey)
           });
         } else {
-          res.status(403).json({ message: 'Password incorrecto' });
+          res.status(403).json({
+            message: res.__('user.login.err')
+          });
         }
       });
     } else {
-      res.status(403).json({ message: 'Usuario incorrecto' });
+      res.status(403).json({
+        message: res.__('user.login.err')
+      });
     }
   });
 }
