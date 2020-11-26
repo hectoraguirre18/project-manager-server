@@ -6,6 +6,7 @@ const logger = require('morgan');
 const expressJwt = require('express-jwt');
 const i18n = require('i18n');
 const config = require('config');
+const cors = require('cors');
 
 const authRouter = require('./routes/auth');
 const usersRouter = require('./routes/users');
@@ -33,6 +34,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(i18n.init);
+app.use(cors());
 app.use(expressJwt({
   secret: jwtKey,
   algorithms: ['HS256']
