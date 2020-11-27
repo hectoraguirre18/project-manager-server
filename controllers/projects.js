@@ -27,19 +27,19 @@ function list(req, res, next) {
   
   function create(req, res) {
 
-    let proyectName = req.body.projectName;
+    let projectName = req.body.projectName;
     let requestDate = req.body.requestDate;
     let startDate = req.body.startDate;
-    let proyectDescription = req.body.proyectDescription;
+    let projectDescription = req.body.projectDescription;
     let managerId = req.body.managerId;
     let ownerId = req.body.ownerId;
     let teamIds = req.body.teamIds;
 
     let project = new Projects({
-      _proyectName : proyectName,
+      _projectName : projectName,
       _requestDate : requestDate,
       _startDate : startDate,
-      _proyectDescription : proyectDescription,
+      _projectDescription : projectDescription,
       _managerId : managerId,
       _ownerId : ownerId,
       _teamIds : teamIds
@@ -61,13 +61,13 @@ function list(req, res, next) {
     let project = new Object();
 
     if(req.body.projectName)
-        user._proyectName = req.body.projectName;
+        user._projectName = req.body.projectName;
     if(req.body.requestDate)
         user._requestDate = req.body.requestDate;
     if(req.body.startDate)
         user._startDate = req.body.startDate;
-    if(req.body.proyectDescription)
-        user._proyectDescription = req.body.proyectDescription;
+    if(req.body.projectDescription)
+        user._projectDescription = req.body.projectDescription;
     if(req.body.managerId)
         user._managerId = req.body.managerId;
     if(req.body.ownerId)

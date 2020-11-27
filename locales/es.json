@@ -24,7 +24,7 @@
     "project.create.ok": "proyecto creado correctamente",
     "project.create.err": "No se pudo crear el proyecto",
     "project.update.ok": "Proyecto actualizado correctamente",
-    "proyect.update.err": "No se pudo modificar proyecto",
+    "project.update.err": "No se pudo modificar proyecto",
     "project.list.ok": "Proyectos encontrados correctamente",
     "projects.list.err": "No se pudo encontrar proyectos",
     "projects.index.ok": "Proyecto encontrado correctamente",
