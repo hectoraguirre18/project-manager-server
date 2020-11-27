@@ -10,19 +10,19 @@ const schema = mongoose.Schema({
     _proyectDescription : String,
     _managerId : mongoose.Types.ObjectId,
     _ownerId : mongoose.Types.ObjectId,
-    _teamLds : [mongoose.Types.ObjectId]
+    _teamIds : [mongoose.Types.ObjectId]
 });
 
 class Project{
 
-    constructor(proyectName, requestDate, startDate, proyectDescription, managerId, ownerId, teamLds){
+    constructor(proyectName, requestDate, startDate, proyectDescription, managerId, ownerId, teamIds){
         this._proyectName = proyectName;
         this._requestDate = requestDate;
         this._startDate = startDate;
         this._proyectDescription = proyectDescription;
         this._ownerId = ownerId;
         this._managerId = managerId;
-        this._teamLds = teamLds;
+        this._teamIds = teamIds;
     }
     get proyectName() {
         return this._proyectName;
@@ -72,12 +72,12 @@ class Project{
         this._managerId = v;
     }
 
-    get teamLds() {
-        return this._teamLds;
+    get teamIds() {
+        return this._teamIds;
     }
 
-    set teamLds(v) {
-        this._teamLds = v;
+    set teamIds(v) {
+        this._teamIds = v;
     }
 }
 

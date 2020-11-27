@@ -6,10 +6,10 @@ const Projects = require('../models/project');
 function list(req, res, next) {
   const page = req.params.page ? req.params.page : 1;
   Projects.paginate({}, {page: page, limit: 100}).then(project => res.status(200).json({
-      message: project.list.ok,
+      message: res.__('project.list.ok'),
       objs: project
   })).catch(error => res.status(500).json({
-      message: project.list.err,
+      message: res.__('project.list.err'),
       obj: error
   }));
   }
@@ -17,10 +17,10 @@ function list(req, res, next) {
   function index(req, res) {
     let id = req.params.id;
     Projects.findOne({_id: id}).then(user => res.status(200).json({
-        message: project.index.ok,
+        message: res.__('project.index.ok'),
         objs: project
     })).catch(error => res.status(500).json({
-        message: project.index.err,
+        message: res.__('project.index.err'),
         obj: error
     }));
   }
@@ -33,7 +33,7 @@ function list(req, res, next) {
     let proyectDescription = req.body.proyectDescription;
     let managerId = req.body.managerId;
     let ownerId = req.body.ownerId;
-    let teamLds = req.body.teamLds;
+    let teamIds = req.body.teamIds;
 
     let project = new Projects({
       _proyectName : proyectName,
@@ -42,14 +42,14 @@ function list(req, res, next) {
       _proyectDescription : proyectDescription,
       _managerId : managerId,
       _ownerId : ownerId,
-      _teamLds : teamLds
+      _teamIds : teamIds
     });
 
     project.save().then(obj => res.status(200).json({
-      message : project.create.ok,
+      message : res.__('project.create.ok'),
       objs : project
     })).catch(err=> res.status(500).json({
-      message : project.create.err,
+      message : res.__('project.create.err'),
       objs : err
     }));
 
@@ -72,14 +72,14 @@ function list(req, res, next) {
         user._managerId = req.body.managerId;
     if(req.body.ownerId)
         user._ownerId = req.body.ownerId;
-    if(req.body.teamLds)
-        user._teamLds = req.body.teamLds;
+    if(req.body.teamIds)
+        user._teamIds = req.body.teamIds;
 
     Projects.findOneAndUpdate({_id: id}, project, {omitUndefined: true}).then(project => res.status(200).json({
-        message: project.update.ok,
+        message: res.__('project.update.ok'),
         objs: project
     })).catch(error => res.status(500).json({
-        message: project.update.err,
+        message: res.__('project.update.err'),
         obj: error
     }));
   }
@@ -87,10 +87,10 @@ function list(req, res, next) {
   function destroy(req, res) {
     const id = req.params.id;
     Projects.deleteOne({_id: id}).then(project => res.status(200).json({
-        message: project.destroy.ok,
+        message: res.__('project.destroy.ok'),
         objs: project
     })).catch(error => res.status(500).json({
-        message: project.destroy.err,
+        message: res.__('project.destroy.err'),
         obj: error
     }));
   }
