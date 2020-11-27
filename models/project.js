@@ -4,32 +4,32 @@ const projects = require('../controllers/projects');
 const user = require('./user');
 
 const schema = mongoose.Schema({
-    _proyectName: String,
+    _projectName: String,
     _requestDate : Date,
     _startDate : Date,
-    _proyectDescription : String,
+    _projectDescription : String,
     _managerId : mongoose.Types.ObjectId,
     _ownerId : mongoose.Types.ObjectId,
-    _teamLds : [mongoose.Types.ObjectId]
+    _teamIds : [mongoose.Types.ObjectId]
 });
 
 class Project{
 
-    constructor(proyectName, requestDate, startDate, proyectDescription, managerId, ownerId, teamLds){
-        this._proyectName = proyectName;
+    constructor(projectName, requestDate, startDate, projectDescription, managerId, ownerId, teamIds){
+        this._projectName = projectName;
         this._requestDate = requestDate;
         this._startDate = startDate;
-        this._proyectDescription = proyectDescription;
+        this._projectDescription = projectDescription;
         this._ownerId = ownerId;
         this._managerId = managerId;
-        this._teamLds = teamLds;
+        this._teamIds = teamIds;
     }
-    get proyectName() {
-        return this._proyectName;
+    get projectName() {
+        return this._projectName;
     }
 
-    set proyectName(v) {
-        this._proyectName = v;
+    set projectName(v) {
+        this._projectName = v;
     }
 
     get requestDate() {
@@ -48,12 +48,12 @@ class Project{
         this._startDate = v;
     }
 
-    get proyectDescription() {
-        return this._proyectDescription;
+    get projectDescription() {
+        return this._projectDescription;
     }
 
-    set proyectDescription(v) {
-        this._proyectDescription = v;
+    set projectDescription(v) {
+        this._projectDescription = v;
     }
     
     get ownerId() {
@@ -72,12 +72,12 @@ class Project{
         this._managerId = v;
     }
 
-    get teamLds() {
-        return this._teamLds;
+    get teamIds() {
+        return this._teamIds;
     }
 
-    set teamLds(v) {
-        this._teamLds = v;
+    set teamIds(v) {
+        this._teamIds = v;
     }
 }
 
