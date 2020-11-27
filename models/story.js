@@ -14,7 +14,7 @@ const schema = mongoose.Schema({
     //Column ID investigando si va aquí
   });
 
-  class User {
+  class Story {
 
     constructor(name, role, functionality, benefit, priority, criteriaContent, criterialist, columnID) {
       this._name = name;
@@ -84,3 +84,7 @@ const schema = mongoose.Schema({
         this._columnID = v;
     }
 }
+
+schema.plugin(mongoosePaginate);
+schema.loadClass(Story);
+module.exports = mongoose.model('Story', schema);
