@@ -4,14 +4,14 @@ const { json } = require('express');
 const Projects = require('../models/project');
 
 function list(req, res, next) {
-  const page = req.params.page ? req.params.page : 1;
+  const page = req.query.page ? req.query.page : 1;
   Projects.paginate({
     $or: [
       {_managerId: req.user},
       {_ownerId: req.user},
       {_teamIds: req.user}
     ]
-  }, {page: page, limit: 100}).then(project => res.status(200).json({
+  }, {page: page, limit: 8}).then(project => res.status(200).json({
       message: res.__('project.list.ok'),
       objs: project
   })).catch(error => res.status(500).json({
@@ -22,7 +22,7 @@ function list(req, res, next) {
   
   function index(req, res) {
     let id = req.params.id;
-    Projects.findOne({_id: id}).then(user => res.status(200).json({
+    Projects.findOne({_id: id}).then(project => res.status(200).json({
         message: res.__('project.index.ok'),
         objs: project
     })).catch(error => res.status(500).json({
@@ -51,7 +51,7 @@ function list(req, res, next) {
       _teamIds : teamIds
     });
 
-    project.save().then(obj => res.status(200).json({
+    project.save().then(project => res.status(200).json({
       message : res.__('project.create.ok'),
       objs : project
     })).catch(err=> res.status(500).json({
@@ -67,19 +67,19 @@ function list(req, res, next) {
     let project = new Object();
 
     if(req.body.projectName)
-        user._projectName = req.body.projectName;
+      project._projectName = req.body.projectName;
     if(req.body.requestDate)
-        user._requestDate = req.body.requestDate;
+      project._requestDate = req.body.requestDate;
     if(req.body.startDate)
-        user._startDate = req.body.startDate;
+      project._startDate = req.body.startDate;
     if(req.body.projectDescription)
-        user._projectDescription = req.body.projectDescription;
+      project._projectDescription = req.body.projectDescription;
     if(req.body.managerId)
-        user._managerId = req.body.managerId;
+      project._managerId = req.body.managerId;
     if(req.body.ownerId)
-        user._ownerId = req.body.ownerId;
+      project._ownerId = req.body.ownerId;
     if(req.body.teamIds)
-        user._teamIds = req.body.teamIds;
+      project._teamIds = req.body.teamIds;
 
     Projects.findOneAndUpdate({_id: id}, project, {omitUndefined: true}).then(project => res.status(200).json({
         message: res.__('project.update.ok'),

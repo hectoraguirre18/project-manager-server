@@ -5,11 +5,11 @@ var controller = require('../controllers/projects');
 /* GET users listing. */
 router.get('/', controller.list);
 
-router.get('/:id', controller.index);
+router.get('/id/:id', controller.index);
 
 router.post('/', controller.create);
 
-router.put('/', controller.update);
+router.put('/:id', controller.update);
 
 router.delete('/:id', controller.destroy);
 

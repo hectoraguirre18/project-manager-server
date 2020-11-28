@@ -49,7 +49,10 @@ function login(req, res) {
         if (hash === result.user.password) {
           res.status(200).json({
             message: res.__('user.login.ok'),
-            objs: jwt.sign(result.user.id, jwtKey)
+            objs: {
+              id: result.user._id,
+              token: jwt.sign(result.user.id, jwtKey)
+            }
           });
         } else {
           res.status(403).json({

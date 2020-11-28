@@ -30,5 +30,6 @@
     "projects.index.ok": "Proyecto encontrado correctamente",
     "project.index.err": "No se encontro el proyecto",
     "project.destroy.ok": "Proyecto eliminado correctamente",
-    "project.destroy.err": "No se pudo eliminar el proyecto"
+    "project.destroy.err": "No se pudo eliminar el proyecto",
+    "project.index.ok": "Proyecto encontrado correctamente"
 }

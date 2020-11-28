@@ -31,5 +31,6 @@
     "projects.index.ok": "Project found",
     "project.index.err": "Unable to found project",
     "project.destroy.ok": "Project eliminated correclty",
-    "project.destroy.err": "Unable to elminate project"
+    "project.destroy.err": "Unable to elminate project",
+    "project.index.ok": "Project found"
 }
