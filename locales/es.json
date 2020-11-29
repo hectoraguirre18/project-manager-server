@@ -3,6 +3,7 @@
     "user.login.err": "Usuario y/o contraseña incorrecta",
     "user.register.ok": "Usuario registrado correctamente",
     "user.register.err": "No se pudo registrar el usuario",
+    "user.register.empty": "No se puede registrar con campos vacios",
     "user.findAll.ok": "Usuarios encontrados correctamente",
     "user.findAll.err": "No se pudieron encontrar los usuarios",
     "user.findOne.ok": "Usuario encontrado correctamente",

@@ -3,6 +3,7 @@
 	"user.login.err": "Invalid credentials",
 	"user.register.ok": "User succesfully registered",
 	"user.register.err": "Could not register user",
+	"user.register.empty": "Cannot register with empty fields",
 	"user.findAll.ok": "Users succesfully found",
 	"user.findAll.err": "Could not find users",
 	"user.findOne.ok": "User successfully found",

@@ -25,6 +25,15 @@ function signup(req, res) {
         _salt: result.salt
       });
 
+      if(user._name === '' || user._birthdate === '' || user._curp === ''
+      || user._rfc === '' || user._address === '' || user._skillList === ''
+      || user._email === '' || user._password === '' || user._salt === '') {
+        res.status(400).json({
+          message: res.__('user.register.empty'),
+          obj: {}
+        });
+      }
+
       user.save().then(user => res.status(200).json({
         message: res.__('user.register.ok'),
         objs: user
