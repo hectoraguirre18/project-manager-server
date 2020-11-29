@@ -8,6 +8,7 @@ const app = require('../app');
 const debug = require('debug')('project-manager-server:server');
 const http = require('http');
 const mongoose = require('mongoose');
+const config = require('config');
 
 /**
  * Get port from environment and store in Express.
@@ -25,8 +26,7 @@ const server = http.createServer(app);
 /**
  * Initialize mongo connection.
  */
-
-const uri = 'mongodb://localhost:27017/pmanager';
+const uri = `mongodb://${config.get('db.url')}:${config.get('db.port')}/pmanager`;
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 
 const db = mongoose.connection;

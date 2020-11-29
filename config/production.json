@@ -1,5 +1,9 @@
 {
     "secret": {
         "key": "a8cbca70fb133a742c30f28b7ba064ee"
+    },
+    "db": {
+        "url": "mongo",
+        "port": "27017"
     }
 }

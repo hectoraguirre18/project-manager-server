@@ -1,5 +1,9 @@
 {
     "secret": {
         "key": "8a6d7797d70e0a0580a8de35859d53f6"
+    },
+    "db": {
+        "url": "localhost",
+        "port": "27017"
     }
 }

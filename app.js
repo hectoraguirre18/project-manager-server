@@ -10,7 +10,7 @@ const cors = require('cors');
 
 const authRouter = require('./routes/auth');
 const usersRouter = require('./routes/users');
-const storiesRouter = require('./routes/stories');
+// const storiesRouter = require('./routes/stories');
 const projectsRouter = require('./routes/projects');
 const columnsRouter = require('./routes/columns');
 
@@ -44,7 +44,7 @@ app.use(expressJwt({
 
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
-app.use('/stories', storiesRouter);
+// app.use('/stories', storiesRouter);
 app.use('/projects', projectsRouter);
 app.use('/columns', columnsRouter);
 
