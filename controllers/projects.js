@@ -5,13 +5,14 @@ const Projects = require('../models/project');
 
 function list(req, res, next) {
   const page = req.query.page ? req.query.page : 1;
+  const limit = req.query.limit ? req.query.limit : 10;
   Projects.paginate({
     $or: [
       {_managerId: req.user},
       {_ownerId: req.user},
       {_teamIds: req.user}
     ]
-  }, {page: page, limit: 8}).then(project => res.status(200).json({
+  }, {page: page, limit: limit}).then(project => res.status(200).json({
       message: res.__('project.list.ok'),
       objs: project
   })).catch(error => res.status(500).json({
